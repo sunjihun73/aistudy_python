@@ -1,4 +1,4 @@
-# AI Study Python Project
+# Python Project for AI Study 
 
 AI 스터디를 위한 파이썬 프로젝트입니다. TensorFlow를 활용한 머신러닝 기초 예제를 포함하고 있습니다.
 
