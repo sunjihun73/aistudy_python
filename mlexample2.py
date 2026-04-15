@@ -25,15 +25,19 @@ def mlFunc(name):
     # 모델 컴파일 및 훈련
     model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
     model.fit(train_images, train_labels, epochs=15, batch_size=32)
+    print(f"모델 학습 완료\n\n")
 
     # 테스트 데이터셋으로 모델 성능 평가하기
+    print(f"\n테스트 데이터셋으로 모델 성능 평가\n")
     test_loss, test_acc = model.evaluate(test_images, test_labels)
     print(f"\n정확도 평가결과: {format(test_acc * 100, '4.2f')} % \n")
 
-    # 예제 그림 띄워보기
-    r = random.randint(0, 9999)
+    # 예제 그림 저장하기 (GUI 환경이 없는 경우 plt.show() 대신 savefig 사용)
+    r = random.randint(0, len(test_images) - 1)
+    print(f"\n[랜덤 인덱스 r] : {r} (테스트 이미지 {len(test_images)}개 중 무작위 선택)\n")
     plt.imshow(test_images[r], cmap='gray')
-    plt.show()
+    plt.savefig('result.png')
+    print("\n[알림] 예제 그림이 'result.png' 파일로 저장되었습니다.\n")
 
     # 예제 그림 맞추기
     example_image = test_images[r]
