@@ -7,6 +7,7 @@ AI 스터디를 위한 파이썬 프로젝트입니다. TensorFlow를 활용한 
 - `mlexample1.py`: TensorFlow를 이용한 선형 회귀(Linear Regression) 예제 코드입니다.
 - `mlexample2.py`: TensorFlow/Keras를 활용한 MNIST 손글씨 숫자 분류(Handwritten Digit Classification) 예제 코드입니다. (단일 레이어 Dense 모델)
 - `mlexample3.py`: CNN(Convolutional Neural Network)을 활용한 고성능 MNIST 손글씨 숫자 분류 예제 코드입니다.
+- `mlexample4.py`: SimpleRNN을 활용한 한국어 문장 생성(Sentence Generation) 예제 코드입니다.
 
 ## mlexample1.py 설명
 
@@ -56,6 +57,23 @@ AI 스터디를 위한 파이썬 프로젝트입니다. TensorFlow를 활용한 
 - CNN을 사용하여 `mlexample2.py`보다 더 높은 정확도를 보여줍니다.
 - 학습된 모델을 사용하여 랜덤한 테스트 이미지에 대한 예측을 수행하고 결과를 `result.png`로 저장합니다.
 
+## mlexample4.py 설명
+
+이 코드는 RNN(순환 신경망)을 사용하여 입력된 단어 다음에 올 단어를 예측하고 문장을 완성하는 예제입니다.
+
+- **데이터**: 3개의 한국어 문장 ("경마장에 있는 말이 뛰고 있다", "그의 말이 법이다", "가는 말이 고와야 오는 말이 곱다")
+- **모델 구조 (RNN)**:
+  - `Embedding`: 단어를 고차원 벡터로 변환 (10차원)
+  - `SimpleRNN`: 순차 데이터 처리를 위한 RNN 층 (32개 유닛)
+  - `Dense`: 다음 단어 예측을 위한 Softmax 출력층
+- **옵티마이저**: Adam
+- **손실 함수**: Categorical Crossentropy (One-hot encoding 적용)
+- **학습 파라미터**: Epochs 200
+
+### 주요 기능
+- 텍스트 데이터를 토큰화하고 정수 인코딩 및 패딩 과정을 거쳐 학습 데이터를 생성합니다.
+- 사용자가 '경마장에', '그의', '가는' 중 하나를 입력하면 학습된 모델이 이후의 단어들을 생성하여 완성된 문장을 출력합니다.
+
 ## 실행 방법
 
 ### 요구 사항
@@ -79,4 +97,7 @@ python mlexample2.py
 
 # MNIST 분류 예제 실행 (CNN)
 python mlexample3.py
+
+# 문장 생성 예제 실행 (RNN)
+python mlexample4.py
 ```
