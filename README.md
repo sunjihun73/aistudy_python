@@ -5,7 +5,8 @@ AI 스터디를 위한 파이썬 프로젝트입니다. TensorFlow를 활용한 
 ## 포함된 파일
 
 - `mlexample1.py`: TensorFlow를 이용한 선형 회귀(Linear Regression) 예제 코드입니다.
-- `mlexample2.py`: TensorFlow/Keras를 활용한 MNIST 손글씨 숫자 분류(Handwritten Digit Classification) 예제 코드입니다.
+- `mlexample2.py`: TensorFlow/Keras를 활용한 MNIST 손글씨 숫자 분류(Handwritten Digit Classification) 예제 코드입니다. (단일 레이어 Dense 모델)
+- `mlexample3.py`: CNN(Convolutional Neural Network)을 활용한 고성능 MNIST 손글씨 숫자 분류 예제 코드입니다.
 
 ## mlexample1.py 설명
 
@@ -37,6 +38,24 @@ AI 스터디를 위한 파이썬 프로젝트입니다. TensorFlow를 활용한 
 - 학습 완료 후 테스트 데이터셋을 통해 모델의 정확도를 평가합니다.
 - 무작위로 선택된 테스트 이미지 1장을 `result.png` 파일로 저장하고, AI가 예측한 결과를 보여줍니다. (GUI 환경이 없는 경우를 대비하여 화면 출력 대신 파일 저장을 사용합니다.)
 
+## mlexample3.py 설명
+
+이 코드는 CNN(합성곱 신경망)을 사용하여 MNIST 데이터셋의 정확도를 높인 예제입니다.
+
+- **데이터**: MNIST (28x28 픽셀의 손글씨 숫자 이미지 70,000장)
+- **모델 구조 (CNN)**:
+  - `Conv2D` & `MaxPooling2D`: 이미지 특징 추출을 위한 합성곱 층 및 풀링 층 (2회 반복)
+  - `Flatten`: 특징 맵을 1차원 벡터로 변환
+  - `Dense`: 64개, 625개 노드의 은닉층
+  - `Dense`: 10개의 출력 노드와 Softmax 활성화 함수
+- **옵티마이저**: Adam
+- **손실 함수**: Categorical Crossentropy (One-hot encoding 적용)
+- **학습 파라미터**: Epochs 5, Batch Size 32
+
+### 주요 기능
+- CNN을 사용하여 `mlexample2.py`보다 더 높은 정확도를 보여줍니다.
+- 학습된 모델을 사용하여 랜덤한 테스트 이미지에 대한 예측을 수행하고 결과를 `result.png`로 저장합니다.
+
 ## 실행 방법
 
 ### 요구 사항
@@ -55,6 +74,9 @@ pip install tensorflow numpy matplotlib
 # 선형 회귀 예제 실행
 python mlexample1.py
 
-# MNIST 분류 예제 실행
+# MNIST 분류 예제 실행 (Dense)
 python mlexample2.py
+
+# MNIST 분류 예제 실행 (CNN)
+python mlexample3.py
 ```
