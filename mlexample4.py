@@ -3,8 +3,8 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.utils import to_categorical
 
-
-def mlFunc(name):
+# RNN 예제
+def rnnFunc(name):
   text = """경마장에 있는 말이 뛰고 있다\n
   그의 말이 법이다\n
   가는 말이 고와야 오는 말이 곱다\n"""
@@ -95,4 +95,4 @@ def mlFunc(name):
 
 # 스크립트를 실행하려면 여백의 녹색 버튼을 누릅니다.
 if __name__ == '__main__':
-    mlFunc('sunjihun')
+    rnnFunc('sunjihun')
